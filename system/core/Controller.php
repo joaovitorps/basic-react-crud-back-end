@@ -72,6 +72,17 @@ class CI_Controller {
 	 */
 	public function __construct()
 	{
+		header("Access-Control-Allow-Origin: *");
+		header("Access-Control-Allow-Headers: Content-Type");
+		header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+		header("Access-Control-Allow-Headers: Authorization, Content-Type");
+		
+		$method = $_SERVER['REQUEST_METHOD'];
+
+        if ($method == 'OPTIONS') {
+            die();
+        }   
+
 		self::$instance =& $this;
 
 		// Assign all the class objects that were instantiated by the
